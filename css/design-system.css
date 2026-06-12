@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════
    fahrzeugteile24 Design System — Light Premium Automotive Theme
    BMW/Mercedes Inspired · Trust-First · Clean & Elegant
    ═══════════════════════════════════════════════════════ */
@@ -517,3 +517,24 @@ textarea.input {
 .reveal-group > .reveal:nth-child(4) { transition-delay: 0.3s; }
 .reveal-group > .reveal:nth-child(5) { transition-delay: 0.4s; }
 .reveal-group > .reveal:nth-child(6) { transition-delay: 0.5s; }
+
+/* ─── Logo Styles ─── */
+.logo-img {
+  height: 28px;
+  width: auto;
+  transition: opacity 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .logo-img {
+    height: 32px;
+  }
+}
+
+/* Light Theme (Default) */
+[data-theme="light"] .light-logo { display: block; }
+[data-theme="light"] .dark-logo { display: none; }
+
+/* Dark Theme */
+[data-theme="dark"] .light-logo { display: none; }
+[data-theme="dark"] .dark-logo { display: block; }
