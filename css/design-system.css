@@ -537,4 +537,8 @@ textarea.input {
 
 /* Dark Theme */
 [data-theme="dark"] .light-logo { display: none; }
-[data-theme="dark"] .dark-logo { display: block; }
+[data-theme="dark"] .dark-logo { 
+  display: block; 
+  /* Siyah pikselleri beyaza dönüştürür, farların sarısı (eğer varsa) biraz etkilenebilir ama genel hatlar beyaz olur */
+  filter: brightness(0) invert(1);
+}
