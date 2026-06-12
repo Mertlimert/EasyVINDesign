@@ -335,15 +335,15 @@
             <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
           </button>
-          <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.875rem;" onclick="showPage('home')">← Ana Sayfa</button>
+          <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.875rem;" onclick="showPage('home')" data-i18n="btn_home">← Ana Sayfa</button>
         </div>
       </div>
     </nav>
 
     <div style="padding-top: 80px; max-width: 800px; margin: 0 auto; padding-left: 24px; padding-right: 24px;">
       <div style="margin-bottom: 32px;">
-        <h2 style="color: var(--text-heading); margin-bottom: 8px;">Taleplerim</h2>
-        <p style="color: var(--text-secondary);">Gönderdiğiniz taleplerin durumunu buradan takip edebilirsiniz.</p>
+        <h2 style="color: var(--text-heading); margin-bottom: 8px;" data-i18n="req_title">Taleplerim</h2>
+        <p style="color: var(--text-secondary);" data-i18n="req_desc">Gönderdiğiniz taleplerin durumunu buradan takip edebilirsiniz.</p>
       </div>
 
       <!-- Request Card 1 -->
@@ -353,13 +353,13 @@
             <h4 style="color: var(--text-heading); font-size: 1rem;">BMW 320d Arka Amortisör</h4>
             <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 2px;">Talep No: #REQ-8392</p>
           </div>
-          <span class="badge badge-warning">● Teklif Bekleniyor</span>
+          <span class="badge badge-warning" data-i18n="req_wait">● Teklif Bekleniyor</span>
         </div>
         <div style="display: flex; gap: 16px; font-size: 0.8125rem; color: var(--text-secondary);">
-          <span>📄 Ruhsat yüklendi</span>
+          <span data-i18n="req_doc">📄 Ruhsat yüklendi</span>
           <span>🕐 2 saat önce</span>
         </div>
-        <div style="margin-top: 12px; padding: 12px 16px; background: var(--info-bg); border-radius: var(--radius-sm); font-size: 0.8125rem; color: var(--info);">
+        <div style="margin-top: 12px; padding: 12px 16px; background: var(--info-bg); border-radius: var(--radius-sm); font-size: 0.8125rem; color: var(--info);" data-i18n="req_msg1">
           💬 Yeni mesaj: "Talebiniz inceleniyor, kısa sürede teklif göndereceğiz."
         </div>
       </div>
@@ -371,13 +371,13 @@
             <h4 style="color: var(--text-heading); font-size: 1rem;">VW Golf 7 Fren Balataları</h4>
             <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 2px;">Talep No: #REQ-8387</p>
           </div>
-          <span class="badge badge-accent">● Teklif Gönderildi</span>
+          <span class="badge badge-accent" data-i18n="req_sent">● Teklif Gönderildi</span>
         </div>
         <div style="display: flex; gap: 16px; font-size: 0.8125rem; color: var(--text-secondary);">
-          <span>📄 Ruhsat yüklendi</span>
+          <span data-i18n="req_doc">📄 Ruhsat yüklendi</span>
           <span>🕐 Dün, 17:46</span>
         </div>
-        <div style="margin-top: 12px; padding: 12px 16px; background: var(--accent-soft); border-radius: var(--radius-sm); font-size: 0.8125rem; color: var(--accent); font-weight: 500;">
+        <div style="margin-top: 12px; padding: 12px 16px; background: var(--accent-soft); border-radius: var(--radius-sm); font-size: 0.8125rem; color: var(--accent); font-weight: 500;" data-i18n="req_msg2">
           📋 Bir teklif kararınızı bekliyor
         </div>
       </div>
@@ -389,10 +389,10 @@
             <h4 style="color: var(--text-heading); font-size: 1rem;">Mercedes C220 Sol Far</h4>
             <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 2px;">Talep No: #REQ-8355</p>
           </div>
-          <span class="badge badge-success">● Tamamlandı</span>
+          <span class="badge badge-success" data-i18n="req_done">● Tamamlandı</span>
         </div>
         <div style="display: flex; gap: 16px; font-size: 0.8125rem; color: var(--text-secondary);">
-          <span>📄 Ruhsat yüklendi</span>
+          <span data-i18n="req_doc">📄 Ruhsat yüklendi</span>
           <span>🕐 10.06.2026</span>
         </div>
       </div>
@@ -408,7 +408,7 @@
           <div class="navbar-brand-text">fahrzeugteile<span>24</span></div>
         </a>
         <div class="navbar-actions">
-          <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.875rem;" onclick="showPage('requests')">← Taleplerim</button>
+          <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.875rem;" onclick="showPage('requests')" data-i18n="btn_back">← Taleplerim</button>
         </div>
       </div>
     </nav>
@@ -422,14 +422,14 @@
             <h3 style="color: var(--text-heading);">BMW 320d Arka Amortisör</h3>
             <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 4px;">#REQ-8392 · 2 saat önce</p>
           </div>
-          <span class="badge badge-warning">● Teklif Bekleniyor</span>
+          <span class="badge badge-warning" data-i18n="req_wait">● Teklif Bekleniyor</span>
         </div>
         <!-- Vehicle Info -->
         <div style="background: var(--accent-soft); border: 1px solid var(--accent-border, rgba(30,58,95,0.15)); border-radius: var(--radius-md); padding: 16px; margin-top: 8px;">
-          <div style="font-size: 0.75rem; color: var(--accent); font-weight: 600; margin-bottom: 8px;">ARAÇ BİLGİSİ</div>
+          <div style="font-size: 0.75rem; color: var(--accent); font-weight: 600; margin-bottom: 8px;" data-i18n="det_veh">ARAÇ BİLGİSİ</div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.875rem;">
-            <div><span style="color: var(--text-muted);">Model:</span> <strong style="color: var(--text-heading);">BMW 320d</strong></div>
-            <div><span style="color: var(--text-muted);">Yıl:</span> <strong style="color: var(--text-heading);">2019</strong></div>
+            <div><span style="color: var(--text-muted);" data-i18n="det_mod">Model:</span> <strong style="color: var(--text-heading);">BMW 320d</strong></div>
+            <div><span style="color: var(--text-muted);" data-i18n="det_yr">Yıl:</span> <strong style="color: var(--text-heading);">2019</strong></div>
             <div style="grid-column: 1 / -1;"><span style="color: var(--text-muted);">VIN:</span> <strong style="color: var(--text-heading);">WBAPH5C55BA123456</strong></div>
           </div>
         </div>
@@ -437,7 +437,7 @@
 
       <!-- Documents -->
       <div class="card" style="margin-bottom: 20px;">
-        <h4 style="color: var(--text-heading); margin-bottom: 16px;">Belgeler</h4>
+        <h4 style="color: var(--text-heading); margin-bottom: 16px;" data-i18n="det_docs">Belgeler</h4>
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px;">
           <div style="background: var(--bg-section-alt); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; text-align: center;">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" style="margin: 0 auto 8px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -449,16 +449,16 @@
 
       <!-- Chat Messages -->
       <div class="card" style="margin-bottom: 20px;">
-        <h4 style="color: var(--text-heading); margin-bottom: 16px;">Mesajlar</h4>
+        <h4 style="color: var(--text-heading); margin-bottom: 16px;" data-i18n="det_msgs">Mesajlar</h4>
         <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px;">
           <!-- Expert message -->
           <div style="display: flex; gap: 8px; max-width: 85%;">
             <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.75rem; font-weight: 700;">E</div>
             <div>
               <div style="background: var(--bg-section-alt); border: 1px solid var(--border); border-radius: 2px 12px 12px 12px; padding: 12px 16px;">
-                <p style="font-size: 0.875rem; color: var(--text-body);">Merhaba, talebiniz uzman ekibimize iletildi. Aracınız için en uygun amortisör seçeneklerini araştırıyoruz. Kısa sürede teklif göndereceğiz.</p>
+                <p style="font-size: 0.875rem; color: var(--text-body);" data-i18n="det_expert_msg">Merhaba, talebiniz uzman ekibimize iletildi. Aracınız için en uygun amortisör seçeneklerini araştırıyoruz. Kısa sürede teklif göndereceğiz.</p>
               </div>
-              <div style="font-size: 0.6875rem; color: var(--text-muted); margin-top: 4px;">fahrzeugteile24 Uzman · 14:32</div>
+              <div style="font-size: 0.6875rem; color: var(--text-muted); margin-top: 4px;"><span data-i18n="det_expert">fahrzeugteile24 Uzman</span> · 14:32</div>
             </div>
           </div>
           <!-- Customer message -->

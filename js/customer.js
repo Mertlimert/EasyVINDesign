@@ -310,7 +310,26 @@ const translations = {
   flow2_cam: { TR: "Kamera", DE: "Kamera" },
   flow2_file: { TR: "Dosya Seç", DE: "Datei auswählen" },
   flow2_success: { TR: "fahrzeugschein.jpg yüklendi", DE: "fahrzeugschein.jpg hochgeladen" },
-  flow2_note: { TR: "Fahrzeugschein olmadan talep işleme alınamaz. Bu, doğru parça tespitinin temelidir.", DE: "Ohne Fahrzeugschein kann die Anfrage nicht bearbeitet werden. Dies ist die Grundlage für die Teileidentifikation." }
+  flow2_note: { TR: "Fahrzeugschein olmadan talep işleme alınamaz. Bu, doğru parça tespitinin temelidir.", DE: "Ohne Fahrzeugschein kann die Anfrage nicht bearbeitet werden. Dies ist die Grundlage für die Teileidentifikation." },
+
+  // Requests & Detail Page
+  req_title: { TR: "Taleplerim", DE: "Meine Anfragen" },
+  req_desc: { TR: "Gönderdiğiniz taleplerin durumunu buradan takip edebilirsiniz.", DE: "Verfolgen Sie hier den Status Ihrer gesendeten Anfragen." },
+  req_wait: { TR: "● Teklif Bekleniyor", DE: "● Angebot ausstehend" },
+  req_sent: { TR: "● Teklif Gönderildi", DE: "● Angebot gesendet" },
+  req_done: { TR: "● Tamamlandı", DE: "● Abgeschlossen" },
+  req_doc: { TR: "📄 Ruhsat yüklendi", DE: "📄 Fahrzeugschein hochgeladen" },
+  req_msg1: { TR: "💬 Yeni mesaj: \"Talebiniz inceleniyor, kısa sürede teklif göndereceğiz.\"", DE: "💬 Neue Nachricht: \"Ihre Anfrage wird geprüft, wir senden Ihnen in Kürze ein Angebot.\"" },
+  req_msg2: { TR: "📋 Bir teklif kararınızı bekliyor", DE: "📋 Ein Angebot wartet auf Ihre Entscheidung" },
+  btn_home: { TR: "← Ana Sayfa", DE: "← Startseite" },
+  btn_back: { TR: "← Taleplerim", DE: "← Meine Anfragen" },
+  det_veh: { TR: "ARAÇ BİLGİSİ", DE: "FAHRZEUGINFORMATIONEN" },
+  det_mod: { TR: "Model:", DE: "Modell:" },
+  det_yr: { TR: "Yıl:", DE: "Jahr:" },
+  det_docs: { TR: "Belgeler", DE: "Dokumente" },
+  det_msgs: { TR: "Mesajlar", DE: "Nachrichten" },
+  det_expert: { TR: "fahrzeugteile24 Uzman", DE: "fahrzeugteile24 Experte" },
+  det_expert_msg: { TR: "Merhaba, talebiniz uzman ekibimize iletildi. Aracınız için en uygun amortisör seçeneklerini araştırıyoruz. Kısa sürede teklif göndereceğiz.", DE: "Hallo, Ihre Anfrage wurde an unser Expertenteam weitergeleitet. Wir recherchieren die passenden Stoßdämpfer-Optionen für Ihr Fahrzeug. Wir werden in Kürze ein Angebot senden." }
 };
 
 let currentLang = 'TR';
@@ -410,22 +429,48 @@ function changeLang(langCode) {
   if (btn) btn.textContent = langCode;
   document.getElementById('langMenu').classList.remove('open');
   
-  // Real translations for DE, fallback for others
   let targetLang = langCode;
   if (langCode !== 'TR' && langCode !== 'DE') {
-    targetLang = 'DE'; // Use German as mock for EN, FR, IT, ES, RU
+    targetLang = 'DE'; 
   }
   currentLang = targetLang;
 
   const elements = document.querySelectorAll('[data-i18n]');
+  let flowIndex = 0;
+
   elements.forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (translations[key] && translations[key][currentLang]) {
       const newText = translations[key][currentLang];
+      
       if (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT') {
         el.setAttribute('placeholder', newText);
+      } else if (el.closest('.hero-eyebrow')) {
+        // Sadece rozet için typewriter efekti
+        typeWriter(el, newText, 15);
+      } else if (el.closest('.steps-grid')) {
+        // Nasıl çalışır bölümü için "flow/akış" efekti
+        el.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+        el.style.transitionDelay = (flowIndex * 0.04) + 's';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(8px)';
+        flowIndex++;
+        
+        setTimeout(() => {
+          el.innerHTML = newText;
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          // Reset delay after animation
+          setTimeout(() => { el.style.transitionDelay = '0s'; }, 300);
+        }, 150);
       } else {
-        typeWriter(el, newText, 10); // Very fast typing effect to feel premium
+        // Diğer tüm başlıklar ve metinler için sade crossfade (soluktan belirme)
+        el.style.transition = 'opacity 0.15s ease';
+        el.style.opacity = '0';
+        setTimeout(() => {
+          el.innerHTML = newText;
+          el.style.opacity = '1';
+        }, 150);
       }
     }
   });
