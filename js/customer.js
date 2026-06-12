@@ -332,47 +332,77 @@ document.addEventListener('click', (e) => {
   }
 });
 
-function typeWriter(element, text, speed = 15) {
+function typeWriter(element, text, speed = 8) {
+  // If text contains HTML, do a fast crossfade to avoid breaking layout
   if (text.includes('<')) {
-    element.innerHTML = text;
+    element.style.transition = 'opacity 0.15s ease';
+    element.style.opacity = '0';
+    setTimeout(() => {
+      element.innerHTML = text;
+      element.style.opacity = '1';
+    }, 150);
     return;
   }
 
-  // Find the text node to replace, preserving SVGs or other elements
-  let targetTextNode = null;
+  // Find the text node or existing wrapper to replace, preserving SVGs
+  let targetNode = null;
   for (let i = element.childNodes.length - 1; i >= 0; i--) {
     const node = element.childNodes[i];
     if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim() !== '') {
-      targetTextNode = node;
+      targetNode = node;
+      break;
+    } else if (node.nodeType === Node.ELEMENT_NODE && node.classList.contains('type-wrap')) {
+      targetNode = node;
       break;
     }
   }
 
-  if (!targetTextNode) {
-    targetTextNode = document.createTextNode('');
-    element.appendChild(targetTextNode);
+  let wrapper;
+  if (!targetNode) {
+    wrapper = document.createElement('span');
+    wrapper.className = 'type-wrap';
+    element.appendChild(wrapper);
+  } else if (targetNode.nodeType === Node.TEXT_NODE) {
+    wrapper = document.createElement('span');
+    wrapper.className = 'type-wrap';
+    element.replaceChild(wrapper, targetNode);
+  } else {
+    wrapper = targetNode;
+    wrapper.innerHTML = ''; // Clear previous text
   }
 
-  // Prepend space if the original node had leading space and it's not empty
-  let leadingSpace = targetTextNode.nodeValue.match(/^\s+/);
-  let prefix = leadingSpace ? leadingSpace[0] : '';
-  if (!prefix && element.children.length > 0) {
-    prefix = ' '; // ensure there's a space after an SVG
+  // Preserve space after SVGs if needed
+  if (element.children.length > 1 && element.firstChild !== wrapper) {
+    wrapper.appendChild(document.createTextNode(' '));
   }
 
-  targetTextNode.nodeValue = prefix;
+  // Create spans for each character.
+  // Setting opacity:0 reserves the exact layout space INSTANTLY. No jumping!
+  const spans = [];
+  for (let i = 0; i < text.length; i++) {
+    const span = document.createElement('span');
+    span.textContent = text[i];
+    span.style.opacity = '0';
+    wrapper.appendChild(span);
+    spans.push(span);
+  }
+
+  // Reveal characters very quickly
   let i = 0;
-
-  function type() {
-    if (i < text.length) {
-      targetTextNode.nodeValue += text.charAt(i);
-      i++;
+  function reveal() {
+    if (i < spans.length) {
+      // Reveal 3 chars at a time for a fast, clean premium feel
+      spans[i].style.opacity = '1';
+      if (i + 1 < spans.length) spans[i + 1].style.opacity = '1';
+      if (i + 2 < spans.length) spans[i + 2].style.opacity = '1';
+      i += 3;
+      
       requestAnimationFrame(() => {
-        setTimeout(type, speed);
+        setTimeout(reveal, speed);
       });
     }
   }
-  type();
+  reveal();
 }
 
 function changeLang(langCode) {
