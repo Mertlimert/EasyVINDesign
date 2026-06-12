@@ -19,18 +19,30 @@
       </a>
 
       <div class="navbar-links">
-        <a href="#nasil-calisir" class="navbar-link">Nasıl Çalışır?</a>
-        <a href="#guven" class="navbar-link">Neden fahrzeugteile24?</a>
-        <a href="#" class="navbar-link" onclick="showPage('requests'); return false;">Taleplerim</a>
-        <a href="#" class="navbar-link">Mesajlar</a>
+        <a href="#nasil-calisir" class="navbar-link" data-i18n="nav_how">Nasıl Çalışır?</a>
+        <a href="#guven" class="navbar-link" data-i18n="nav_why">Neden fahrzeugteile24?</a>
+        <a href="#" class="navbar-link" onclick="showPage('requests'); return false;" data-i18n="nav_req">Taleplerim</a>
+        <a href="#" class="navbar-link" data-i18n="nav_msgs">Mesajlar</a>
       </div>
 
       <div class="navbar-actions">
+        <div class="lang-selector">
+          <button class="lang-btn" onclick="toggleLangMenu()" id="currentLangBtn">TR</button>
+          <div class="lang-menu" id="langMenu">
+            <a href="#" onclick="changeLang('TR'); return false;">TR</a>
+            <a href="#" onclick="changeLang('DE'); return false;">DE</a>
+            <a href="#" onclick="changeLang('EN'); return false;">EN</a>
+            <a href="#" onclick="changeLang('FR'); return false;">FR</a>
+            <a href="#" onclick="changeLang('IT'); return false;">IT</a>
+            <a href="#" onclick="changeLang('ES'); return false;">ES</a>
+            <a href="#" onclick="changeLang('RU'); return false;">RU</a>
+          </div>
+        </div>
         <button class="theme-toggle" id="themeToggle" title="Tema değiştir">
           <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
-        <a href="#" class="btn btn-primary navbar-cta" onclick="openFlow(); return false;">Parça Talebi Oluştur</a>
+        <a href="#" class="btn btn-primary navbar-cta" onclick="openFlow(); return false;" data-i18n="nav_cta">Parça Talebi Oluştur</a>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
           <span></span><span></span><span></span>
         </button>
@@ -68,14 +80,14 @@
       <div class="container">
         <div class="hero-inner">
           <div class="hero-content">
-            <div class="hero-eyebrow reveal">
+            <div class="hero-eyebrow reveal" data-i18n="hero_eyebrow">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               VIN Bazlı Uzman Kontrolü
             </div>
 
-            <h1 class="reveal">Doğru Yedek Parça.<br>Uzman Güvencesiyle.</h1>
+            <h1 class="reveal" data-i18n="hero_title">Doğru Yedek Parça.<br>Uzman Güvencesiyle.</h1>
             
-            <p class="hero-desc reveal">
+            <p class="hero-desc reveal" data-i18n="hero_desc">
               Fahrzeugschein'ınızı yükleyin, uzman ekibimiz VIN kontrolü yapsın. 
               Tahmin yok, yanlış parça riski yok — sadece doğrulanmış sonuçlar.
             </p>
@@ -83,23 +95,23 @@
             <div class="hero-actions reveal">
               <button class="btn btn-primary btn-lg" onclick="openFlow()">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-                Parça Talebi Oluştur
+                <span data-i18n="hero_btn_primary">Parça Talebi Oluştur</span>
               </button>
-              <a href="#nasil-calisir" class="btn btn-secondary btn-lg">Nasıl Çalışır?</a>
+              <a href="#nasil-calisir" class="btn btn-secondary btn-lg" data-i18n="hero_btn_secondary">Nasıl Çalışır?</a>
             </div>
 
             <div class="hero-trust reveal">
               <div class="hero-trust-item">
                 <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Ücretsiz talep
+                <span data-i18n="hero_trust_1">Ücretsiz talep</span>
               </div>
               <div class="hero-trust-item">
                 <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                15-30 dk yanıt
+                <span data-i18n="hero_trust_2">15-30 dk yanıt</span>
               </div>
               <div class="hero-trust-item">
                 <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Kişisel danışmanlık
+                <span data-i18n="hero_trust_3">Kişisel danışmanlık</span>
               </div>
             </div>
           </div>
@@ -111,40 +123,40 @@
     <section class="section section-alt" id="nasil-calisir">
       <div class="container">
         <div class="section-header reveal">
-          <h2>Nasıl Çalışır?</h2>
-          <p>4 basit adımda doğru yedek parçaya ulaşın. Tüm süreç hızlı, şeffaf ve uzman kontrolünde.</p>
+          <h2 data-i18n="steps_title">Nasıl Çalışır?</h2>
+          <p data-i18n="steps_desc">4 basit adımda doğru yedek parçaya ulaşın. Tüm süreç hızlı, şeffaf ve uzman kontrolünde.</p>
         </div>
 
         <div class="steps-grid reveal-group">
           <div class="step-card reveal">
             <div class="step-number">1</div>
             <div class="step-content">
-              <h4>Talep Oluşturun</h4>
-              <p>Aradığınız parçayı kendi kelimelerinizle yazın. "BMW 320d arka amortisör" gibi.</p>
+              <h4 data-i18n="step1_title">Talep Oluşturun</h4>
+              <p data-i18n="step1_desc">Aradığınız parçayı kendi kelimelerinizle yazın. "BMW 320d arka amortisör" gibi.</p>
             </div>
           </div>
 
           <div class="step-card reveal">
             <div class="step-number">2</div>
             <div class="step-content">
-              <h4>Ruhsat Yükleyin</h4>
-              <p>Fahrzeugschein fotoğrafını yükleyin. VIN kontrolü doğru parçanın temelidir.</p>
+              <h4 data-i18n="step2_title">Ruhsat Yükleyin</h4>
+              <p data-i18n="step2_desc">Fahrzeugschein fotoğrafını yükleyin. VIN kontrolü doğru parçanın temelidir.</p>
             </div>
           </div>
 
           <div class="step-card reveal">
             <div class="step-number">3</div>
             <div class="step-content">
-              <h4>Teklif Alın</h4>
-              <p>Uzmanlarımız parçayı araştırır, marka seçeneklerini ve fiyatları belirler.</p>
+              <h4 data-i18n="step3_title">Teklif Alın</h4>
+              <p data-i18n="step3_desc">Uzmanlarımız parçayı araştırır, marka seçeneklerini ve fiyatları belirler.</p>
             </div>
           </div>
 
           <div class="step-card reveal">
             <div class="step-number">4</div>
             <div class="step-content">
-              <h4>Onaylayın</h4>
-              <p>Teklifi onaylayın veya soru sorun. Sürecin her adımını takip edin.</p>
+              <h4 data-i18n="step4_title">Onaylayın</h4>
+              <p data-i18n="step4_desc">Teklifi onaylayın veya soru sorun. Sürecin her adımını takip edin.</p>
             </div>
           </div>
         </div>
@@ -155,8 +167,8 @@
     <section class="section" id="guven">
       <div class="container">
         <div class="section-header reveal">
-          <h2>fahrzeugteile24'ü Farklı Yapan Ne?</h2>
-          <p>Uzmanlığı dijital ortamda daha verimli hale getiren, güvenilir bir yedek parça danışmanlık platformu.</p>
+          <h2 data-i18n="trust_title">fahrzeugteile24'ü Farklı Yapan Ne?</h2>
+          <p data-i18n="trust_desc">Uzmanlığı dijital ortamda daha verimli hale getiren, güvenilir bir yedek parça danışmanlık platformu.</p>
         </div>
 
         <div class="trust-grid reveal-group">
@@ -165,8 +177,8 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <div>
-              <h4>VIN Bazlı Kontrol</h4>
-              <p>Her talep araç ruhsatındaki VIN numarasıyla doğrulanır. Tahmin yoktur.</p>
+              <h4 data-i18n="trust1_title">VIN Bazlı Kontrol</h4>
+              <p data-i18n="trust1_desc">Her talep araç ruhsatındaki VIN numarasıyla doğrulanır. Tahmin yoktur.</p>
             </div>
           </div>
 
@@ -175,8 +187,8 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <div>
-              <h4>Gerçek Uzman Desteği</h4>
-              <p>Bütün teknik kararlar gerçek uzmanlar tarafından verilir. Otomatik öneri yoktur.</p>
+              <h4 data-i18n="trust2_title">Gerçek Uzman Desteği</h4>
+              <p data-i18n="trust2_desc">Bütün teknik kararlar gerçek uzmanlar tarafından verilir. Otomatik öneri yoktur.</p>
             </div>
           </div>
 
@@ -185,8 +197,8 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
             <div>
-              <h4>Doğru Parça Garantisi</h4>
-              <p>Bütün parçalar uzmanlar tarafından kontrol edilir. Yanlış parça riski ortadan kalkar.</p>
+              <h4 data-i18n="trust3_title">Doğru Parça Garantisi</h4>
+              <p data-i18n="trust3_desc">Bütün parçalar uzmanlar tarafından kontrol edilir. Yanlış parça riski ortadan kalkar.</p>
             </div>
           </div>
 
@@ -195,8 +207,8 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
             </div>
             <div>
-              <h4>Şeffaf Fiyat Teklifleri</h4>
-              <p>Marka, fiyat ve teslimat süresi net olarak sunulur. Gizli maliyet yoktur.</p>
+              <h4 data-i18n="trust4_title">Şeffaf Fiyat Teklifleri</h4>
+              <p data-i18n="trust4_desc">Marka, fiyat ve teslimat süresi net olarak sunulur. Gizli maliyet yoktur.</p>
             </div>
           </div>
 
@@ -205,8 +217,8 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             </div>
             <div>
-              <h4>Talep & Sipariş Takibi</h4>
-              <p>Talebinizin her aşamasını görün. WhatsApp karmaşası artık geride kaldı.</p>
+              <h4 data-i18n="trust5_title">Talep & Sipariş Takibi</h4>
+              <p data-i18n="trust5_desc">Talebinizin her aşamasını görün. WhatsApp karmaşası artık geride kaldı.</p>
             </div>
           </div>
 
@@ -215,8 +227,8 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             </div>
             <div>
-              <h4>Çok Dilli Destek</h4>
-              <p>Almanca, Türkçe, İngilizce ve daha fazlası. Herkes kendi dilinde destek alabilir.</p>
+              <h4 data-i18n="trust6_title">Çok Dilli Destek</h4>
+              <p data-i18n="trust6_desc">Almanca, Türkçe, İngilizce ve daha fazlası. Herkes kendi dilinde destek alabilir.</p>
             </div>
           </div>
         </div>
@@ -227,8 +239,8 @@
     <section class="section section-alt" id="kimler-icin">
       <div class="container">
         <div class="section-header reveal">
-          <h2>Kimler İçin?</h2>
-          <p>fahrzeugteile24, doğru yedek parçayı güvenle almak isteyen herkes için tasarlandı.</p>
+          <h2 data-i18n="aud_title">Kimler İçin?</h2>
+          <p data-i18n="aud_desc">fahrzeugteile24, doğru yedek parçayı güvenle almak isteyen herkes için tasarlandı.</p>
         </div>
 
         <div class="audience-list reveal-group">
@@ -236,37 +248,37 @@
             <div class="audience-check">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
-            Araçlardan çok anlamayan kişiler
+            <span data-i18n="aud1">Araçlardan çok anlamayan kişiler</span>
           </div>
           <div class="audience-item reveal">
             <div class="audience-check">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
-            Yanlış parça sipariş etmek istemeyenler
+            <span data-i18n="aud2">Yanlış parça sipariş etmek istemeyenler</span>
           </div>
           <div class="audience-item reveal">
             <div class="audience-check">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
-            Güvenilir danışmanlık arayanlar
+            <span data-i18n="aud3">Güvenilir danışmanlık arayanlar</span>
           </div>
           <div class="audience-item reveal">
             <div class="audience-check">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
-            Fiziksel dükkâna gidemeyenler
+            <span data-i18n="aud4">Fiziksel dükkâna gidemeyenler</span>
           </div>
           <div class="audience-item reveal">
             <div class="audience-check">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
-            Farklı dillerde destek isteyenler
+            <span data-i18n="aud5">Farklı dillerde destek isteyenler</span>
           </div>
           <div class="audience-item reveal">
             <div class="audience-check">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
-            Profesyonel deneyim bekleyen araç sahipleri
+            <span data-i18n="aud6">Profesyonel deneyim bekleyen araç sahipleri</span>
           </div>
         </div>
       </div>
@@ -276,8 +288,8 @@
     <section class="section">
       <div class="container">
         <div class="quote-section reveal">
-          <p class="quote-text">„Wir raten nicht. Wir prüfen die VIN."</p>
-          <p class="quote-sub">Çünkü doğru yedek parça, tahminle değil; uzmanlık ve doğrulamayla bulunur.</p>
+          <p class="quote-text" data-i18n="quote_text">„Wir raten nicht. Wir prüfen die VIN."</p>
+          <p class="quote-sub" data-i18n="quote_sub">Çünkü doğru yedek parça, tahminle değil; uzmanlık ve doğrulamayla bulunur.</p>
         </div>
       </div>
     </section>
@@ -286,9 +298,9 @@
     <section class="cta-section">
       <div class="container">
         <div class="cta-box reveal">
-          <h2>Doğru Parçaya Ulaşmanın En Kolay Yolu</h2>
-          <p>Talebinizi oluşturun, uzmanlarımız sizin için en uygun parçayı bulsun.</p>
-          <button class="btn btn-lg" onclick="openFlow()">
+          <h2 data-i18n="cta_title">Doğru Parçaya Ulaşmanın En Kolay Yolu</h2>
+          <p data-i18n="cta_desc">Talebinizi oluşturun, uzmanlarımız sizin için en uygun parçayı bulsun.</p>
+          <button class="btn btn-lg" onclick="openFlow()" data-i18n="cta_btn">
             Parça Talebi Oluştur — Ücretsiz
           </button>
         </div>
@@ -299,11 +311,11 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-inner">
-          <div class="footer-text">© 2026 fahrzeugteile24. Tüm hakları saklıdır.</div>
+          <div class="footer-text" data-i18n="footer_copy">© 2026 fahrzeugteile24. Tüm hakları saklıdır.</div>
           <div class="footer-text">
-            <a href="#" style="color: var(--text-muted);">Gizlilik</a> · 
-            <a href="#" style="color: var(--text-muted);">Kullanım Şartları</a> · 
-            <a href="#" style="color: var(--text-muted);">İade Politikası</a>
+            <a href="#" style="color: var(--text-muted);" data-i18n="footer_privacy">Gizlilik</a> · 
+            <a href="#" style="color: var(--text-muted);" data-i18n="footer_terms">Kullanım Şartları</a> · 
+            <a href="#" style="color: var(--text-muted);" data-i18n="footer_returns">İade Politikası</a>
           </div>
         </div>
       </div>
@@ -520,17 +532,17 @@
         <button class="flow-back-btn" onclick="closeFlow()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <span class="flow-header-title">Parça Talebi</span>
+        <span class="flow-header-title" data-i18n="flow1_title">Parça Talebi</span>
         <span class="flow-header-step">1 / 4</span>
       </div>
 
       <div class="flow-progress">
         <div class="flow-progress-inner">
           <div class="progress-track">
-            <div class="progress-step active"><div class="progress-dot">1</div><div class="progress-label">Parça</div></div>
-            <div class="progress-step"><div class="progress-dot">2</div><div class="progress-label">Ruhsat</div></div>
-            <div class="progress-step"><div class="progress-dot">3</div><div class="progress-label">Ek Bilgi</div></div>
-            <div class="progress-step"><div class="progress-dot">4</div><div class="progress-label">Gönder</div></div>
+            <div class="progress-step active"><div class="progress-dot">1</div><div class="progress-label" data-i18n="flow_prog1">Parça</div></div>
+            <div class="progress-step"><div class="progress-dot">2</div><div class="progress-label" data-i18n="flow_prog2">Ruhsat</div></div>
+            <div class="progress-step"><div class="progress-dot">3</div><div class="progress-label" data-i18n="flow_prog3">Ek Bilgi</div></div>
+            <div class="progress-step"><div class="progress-dot">4</div><div class="progress-label" data-i18n="flow_prog4">Gönder</div></div>
           </div>
         </div>
       </div>
@@ -538,28 +550,28 @@
       <div class="flow-body">
         <div class="flow-form">
           <div>
-            <h2>Hangi parçayı arıyorsunuz?</h2>
-            <p class="subtitle">Aradığınız parçayı seçin veya kısaca tanımlayın.</p>
+            <h2 data-i18n="flow1_h2">Hangi parçayı arıyorsunuz?</h2>
+            <p class="subtitle" data-i18n="flow1_sub">Aradığınız parçayı seçin veya kısaca tanımlayın.</p>
           </div>
 
           <div class="chip-group">
-            <button class="chip" onclick="selectChip(this)">Fren Balataları</button>
-            <button class="chip" onclick="selectChip(this)">Amortisör</button>
-            <button class="chip" onclick="selectChip(this)">Far / Aydınlatma</button>
-            <button class="chip" onclick="selectChip(this)">Yağ Filtresi</button>
-            <button class="chip" onclick="selectChip(this)">Akü</button>
-            <button class="chip" onclick="selectChip(this)">Diğer</button>
+            <button class="chip" onclick="selectChip(this)" data-i18n="flow1_chip1">Fren Balataları</button>
+            <button class="chip" onclick="selectChip(this)" data-i18n="flow1_chip2">Amortisör</button>
+            <button class="chip" onclick="selectChip(this)" data-i18n="flow1_chip3">Far / Aydınlatma</button>
+            <button class="chip" onclick="selectChip(this)" data-i18n="flow1_chip4">Yağ Filtresi</button>
+            <button class="chip" onclick="selectChip(this)" data-i18n="flow1_chip5">Akü</button>
+            <button class="chip" onclick="selectChip(this)" data-i18n="flow1_chip6">Diğer</button>
           </div>
 
           <div class="field-group">
-            <label class="input-label">Parça Tanımı</label>
-            <textarea class="input" placeholder="Örn: 2017 BMW 320d için arka sağ amortisör arıyorum..."></textarea>
+            <label class="input-label" data-i18n="flow1_label">Parça Tanımı</label>
+            <textarea class="input" placeholder="Örn: 2017 BMW 320d için arka sağ amortisör arıyorum..." data-i18n="flow1_ph"></textarea>
           </div>
         </div>
       </div>
 
       <div class="flow-footer">
-        <button class="btn btn-primary btn-lg btn-block" onclick="goToStep(2)">Devam Et</button>
+        <button class="btn btn-primary btn-lg btn-block" onclick="goToStep(2)" data-i18n="flow_next">Devam Et</button>
       </div>
     </div>
 
@@ -569,17 +581,17 @@
         <button class="flow-back-btn" onclick="goToStep(1)">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <span class="flow-header-title">Araç Ruhsatı</span>
+        <span class="flow-header-title" data-i18n="flow2_title">Araç Ruhsatı</span>
         <span class="flow-header-step">2 / 4</span>
       </div>
 
       <div class="flow-progress">
         <div class="flow-progress-inner">
           <div class="progress-track">
-            <div class="progress-step completed"><div class="progress-dot">✓</div><div class="progress-label">Parça</div></div>
-            <div class="progress-step active"><div class="progress-dot">2</div><div class="progress-label">Ruhsat</div></div>
-            <div class="progress-step"><div class="progress-dot">3</div><div class="progress-label">Ek Bilgi</div></div>
-            <div class="progress-step"><div class="progress-dot">4</div><div class="progress-label">Gönder</div></div>
+            <div class="progress-step completed"><div class="progress-dot">✓</div><div class="progress-label" data-i18n="flow_prog1">Parça</div></div>
+            <div class="progress-step active"><div class="progress-dot">2</div><div class="progress-label" data-i18n="flow_prog2">Ruhsat</div></div>
+            <div class="progress-step"><div class="progress-dot">3</div><div class="progress-label" data-i18n="flow_prog3">Ek Bilgi</div></div>
+            <div class="progress-step"><div class="progress-dot">4</div><div class="progress-label" data-i18n="flow_prog4">Gönder</div></div>
           </div>
         </div>
       </div>
@@ -587,8 +599,8 @@
       <div class="flow-body">
         <div class="flow-form">
           <div>
-            <h2>Fahrzeugschein Gerekli</h2>
-            <p class="subtitle">Doğru parçayı bulabilmemiz için VIN kontrolü şarttır. Aynı modelin farklı motor ve donanım varyasyonları olabilir.</p>
+            <h2 data-i18n="flow2_h2">Fahrzeugschein Gerekli</h2>
+            <p class="subtitle" data-i18n="flow2_sub">Doğru parçayı bulabilmemiz için VIN kontrolü şarttır. Aynı modelin farklı motor ve donanım varyasyonları olabilir.</p>
           </div>
 
           <div class="upload-area" onclick="simulateUpload(this)">
@@ -596,30 +608,30 @@
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
             </div>
             <div>
-              <p style="font-weight: 600; color: var(--text-heading); margin-bottom: 4px;">Ruhsat fotoğrafını yükleyin</p>
-              <p class="text-muted" style="font-size: 0.8125rem;">JPG, PNG veya PDF · Maks. 10 MB</p>
+              <p style="font-weight: 600; color: var(--text-heading); margin-bottom: 4px;" data-i18n="flow2_up_title">Ruhsat fotoğrafını yükleyin</p>
+              <p class="text-muted" style="font-size: 0.8125rem;" data-i18n="flow2_up_sub">JPG, PNG veya PDF · Maks. 10 MB</p>
             </div>
           </div>
 
           <div class="upload-actions">
             <button class="btn btn-secondary" onclick="simulateUpload(document.querySelector('.upload-area'))">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-              Kamera
+              <span data-i18n="flow2_cam">Kamera</span>
             </button>
             <button class="btn btn-secondary" onclick="simulateUpload(document.querySelector('.upload-area'))">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
-              Dosya Seç
+              <span data-i18n="flow2_file">Dosya Seç</span>
             </button>
           </div>
 
           <div class="file-pill" id="filePill" style="display: none;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            fahrzeugschein.jpg yüklendi
+            <span data-i18n="flow2_success">fahrzeugschein.jpg yüklendi</span>
           </div>
 
           <div class="info-note">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            Fahrzeugschein olmadan talep işleme alınamaz. Bu, doğru parça tespitinin temelidir.
+            <span data-i18n="flow2_note">Fahrzeugschein olmadan talep işleme alınamaz. Bu, doğru parça tespitinin temelidir.</span>
           </div>
         </div>
       </div>

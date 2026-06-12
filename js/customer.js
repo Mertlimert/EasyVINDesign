@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════
+/* ═══════════════════════════════════════
    fahrzeugteile24 — Customer Interactions
    Theme Toggle + Flow + Scroll Reveals
    ═══════════════════════════════════════ */
@@ -219,3 +219,184 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log('fahrzeugteile24 Customer UI initialized');
 });
+
+// ─── Translations & Language Switcher ───
+
+const translations = {
+  nav_how: { TR: "Nasıl Çalışır?", DE: "Wie es funktioniert?" },
+  nav_why: { TR: "Neden fahrzeugteile24?", DE: "Warum fahrzeugteile24?" },
+  nav_req: { TR: "Taleplerim", DE: "Meine Anfragen" },
+  nav_msgs: { TR: "Mesajlar", DE: "Nachrichten" },
+  nav_cta: { TR: "Parça Talebi Oluştur", DE: "Teileanfrage erstellen" },
+  
+  hero_eyebrow: { TR: "VIN Bazlı Uzman Kontrolü", DE: "VIN-basierte Expertenprüfung" },
+  hero_title: { TR: "Doğru Yedek Parça.<br>Uzman Güvencesiyle.", DE: "Das richtige Ersatzteil.<br>Mit Experten-Garantie." },
+  hero_desc: { TR: "Fahrzeugschein'ınızı yükleyin, uzman ekibimiz VIN kontrolü yapsın. Tahmin yok, yanlış parça riski yok — sadece doğrulanmış sonuçlar.", DE: "Laden Sie Ihren Fahrzeugschein hoch, unser Expertenteam führt eine VIN-Prüfung durch. Kein Raten, kein Risiko für falsche Teile — nur verifizierte Ergebnisse." },
+  hero_btn_primary: { TR: "Parça Talebi Oluştur", DE: "Teileanfrage erstellen" },
+  hero_btn_secondary: { TR: "Nasıl Çalışır?", DE: "Wie es funktioniert?" },
+  hero_trust_1: { TR: "Ücretsiz talep", DE: "Kostenlose Anfrage" },
+  hero_trust_2: { TR: "15-30 dk yanıt", DE: "15-30 Min. Antwort" },
+  hero_trust_3: { TR: "Kişisel danışmanlık", DE: "Persönliche Beratung" },
+  
+  steps_title: { TR: "Nasıl Çalışır?", DE: "Wie es funktioniert?" },
+  steps_desc: { TR: "4 basit adımda doğru yedek parçaya ulaşın. Tüm süreç hızlı, şeffaf ve uzman kontrolünde.", DE: "In 4 einfachen Schritten zum richtigen Ersatzteil. Der Prozess ist schnell, transparent und expertengeprüft." },
+  step1_title: { TR: "Talep Oluşturun", DE: "Anfrage erstellen" },
+  step1_desc: { TR: "Aradığınız parçayı kendi kelimelerinizle yazın. \"BMW 320d arka amortisör\" gibi.", DE: "Beschreiben Sie das gesuchte Teil in Ihren Worten. Z.B. 'BMW 320d Stoßdämpfer hinten'." },
+  step2_title: { TR: "Ruhsat Yükleyin", DE: "Fahrzeugschein hochladen" },
+  step2_desc: { TR: "Fahrzeugschein fotoğrafını yükleyin. VIN kontrolü doğru parçanın temelidir.", DE: "Laden Sie ein Foto Ihres Fahrzeugscheins hoch. Die VIN-Prüfung ist die Basis für das richtige Teil." },
+  step3_title: { TR: "Teklif Alın", DE: "Angebot erhalten" },
+  step3_desc: { TR: "Uzmanlarımız parçayı araştırır, marka seçeneklerini ve fiyatları belirler.", DE: "Unsere Experten recherchieren das Teil und ermitteln Markenoptionen sowie Preise." },
+  step4_title: { TR: "Onaylayın", DE: "Bestätigen" },
+  step4_desc: { TR: "Teklifi onaylayın veya soru sorun. Sürecin her adımını takip edin.", DE: "Bestätigen Sie das Angebot oder stellen Sie Fragen. Verfolgen Sie jeden Schritt." },
+
+  trust_title: { TR: "fahrzeugteile24'ü Farklı Yapan Ne?", DE: "Was macht fahrzeugteile24 anders?" },
+  trust_desc: { TR: "Uzmanlığı dijital ortamda daha verimli hale getiren, güvenilir bir yedek parça danışmanlık platformu.", DE: "Eine zuverlässige Ersatzteilberatungsplattform, die Fachwissen im digitalen Umfeld effizienter macht." },
+  trust1_title: { TR: "VIN Bazlı Kontrol", DE: "VIN-basierte Prüfung" },
+  trust1_desc: { TR: "Her talep araç ruhsatındaki VIN numarasıyla doğrulanır. Tahmin yoktur.", DE: "Jede Anfrage wird mit der VIN aus dem Fahrzeugschein verifiziert. Kein Raten." },
+  trust2_title: { TR: "Gerçek Uzman Desteği", DE: "Echte Expertenunterstützung" },
+  trust2_desc: { TR: "Bütün teknik kararlar gerçek uzmanlar tarafından verilir. Otomatik öneri yoktur.", DE: "Alle technischen Entscheidungen werden von echten Experten getroffen. Keine automatischen Empfehlungen." },
+  trust3_title: { TR: "Doğru Parça Garantisi", DE: "Passgenauigkeits-Garantie" },
+  trust3_desc: { TR: "Bütün parçalar uzmanlar tarafından kontrol edilir. Yanlış parça riski ortadan kalkar.", DE: "Alle Teile werden von Experten geprüft. Das Risiko falscher Teile entfällt." },
+  trust4_title: { TR: "Şeffaf Fiyat Teklifleri", DE: "Transparente Preisangebote" },
+  trust4_desc: { TR: "Marka, fiyat ve teslimat süresi net olarak sunulur. Gizli maliyet yoktur.", DE: "Marke, Preis und Lieferzeit werden klar dargestellt. Keine versteckten Kosten." },
+  trust5_title: { TR: "Talep & Sipariş Takibi", DE: "Anfrage- & Bestellverfolgung" },
+  trust5_desc: { TR: "Talebinizin her aşamasını görün. WhatsApp karmaşası artık geride kaldı.", DE: "Sehen Sie jeden Schritt Ihrer Anfrage. WhatsApp-Chaos gehört der Vergangenheit an." },
+  trust6_title: { TR: "Çok Dilli Destek", DE: "Mehrsprachiger Support" },
+  trust6_desc: { TR: "Almanca, Türkçe, İngilizce ve daha fazlası. Herkes kendi dilinde destek alabilir.", DE: "Deutsch, Türkisch, Englisch und mehr. Jeder kann Support in seiner Sprache erhalten." },
+
+  aud_title: { TR: "Kimler İçin?", DE: "Für wen?" },
+  aud_desc: { TR: "fahrzeugteile24, doğru yedek parçayı güvenle almak isteyen herkes için tasarlandı.", DE: "fahrzeugteile24 wurde für alle entwickelt, die sicher das richtige Ersatzteil kaufen möchten." },
+  aud1: { TR: "Araçlardan çok anlamayan kişiler", DE: "Personen ohne große Fahrzeugkenntnisse" },
+  aud2: { TR: "Yanlış parça sipariş etmek istemeyenler", DE: "Diejenigen, die keine falschen Teile bestellen möchten" },
+  aud3: { TR: "Güvenilir danışmanlık arayanlar", DE: "Diejenigen, die eine zuverlässige Beratung suchen" },
+  aud4: { TR: "Fiziksel dükkâna gidemeyenler", DE: "Personen, die kein physisches Geschäft besuchen können" },
+  aud5: { TR: "Farklı dillerde destek isteyenler", DE: "Diejenigen, die Support in verschiedenen Sprachen wünschen" },
+  aud6: { TR: "Profesyonel deneyim bekleyen araç sahipleri", DE: "Fahrzeugbesitzer, die eine professionelle Erfahrung erwarten" },
+
+  quote_text: { TR: "„Wir raten nicht. Wir prüfen die VIN.\"", DE: "„Wir raten nicht. Wir prüfen die VIN.“" },
+  quote_sub: { TR: "Çünkü doğru yedek parça, tahminle değil; uzmanlık ve doğrulamayla bulunur.", DE: "Denn das richtige Ersatzteil findet man nicht durch Raten, sondern durch Expertise und Verifizierung." },
+
+  cta_title: { TR: "Doğru Parçaya Ulaşmanın En Kolay Yolu", DE: "Der einfachste Weg zum richtigen Teil" },
+  cta_desc: { TR: "Talebinizi oluşturun, uzmanlarımız sizin için en uygun parçayı bulsun.", DE: "Erstellen Sie Ihre Anfrage, unsere Experten finden das passendste Teil für Sie." },
+  cta_btn: { TR: "Parça Talebi Oluştur — Ücretsiz", DE: "Teileanfrage erstellen — Kostenlos" },
+
+  footer_copy: { TR: "© 2026 fahrzeugteile24. Tüm hakları saklıdır.", DE: "© 2026 fahrzeugteile24. Alle Rechte vorbehalten." },
+  footer_privacy: { TR: "Gizlilik", DE: "Datenschutz" },
+  footer_terms: { TR: "Kullanım Şartları", DE: "Nutzungsbedingungen" },
+  footer_returns: { TR: "İade Politikası", DE: "Rückgaberecht" },
+
+  flow1_title: { TR: "Parça Talebi", DE: "Teileanfrage" },
+  flow_prog1: { TR: "Parça", DE: "Teil" },
+  flow_prog2: { TR: "Ruhsat", DE: "Fahrzeugschein" },
+  flow_prog3: { TR: "Ek Bilgi", DE: "Zusatzinfos" },
+  flow_prog4: { TR: "Gönder", DE: "Senden" },
+  flow1_h2: { TR: "Hangi parçayı arıyorsunuz?", DE: "Welches Teil suchen Sie?" },
+  flow1_sub: { TR: "Aradığınız parçayı seçin veya kısaca tanımlayın.", DE: "Wählen Sie das gesuchte Teil aus oder beschreiben Sie es kurz." },
+  flow1_chip1: { TR: "Fren Balataları", DE: "Bremsbeläge" },
+  flow1_chip2: { TR: "Amortisör", DE: "Stoßdämpfer" },
+  flow1_chip3: { TR: "Far / Aydınlatma", DE: "Scheinwerfer / Beleuchtung" },
+  flow1_chip4: { TR: "Yağ Filtresi", DE: "Ölfilter" },
+  flow1_chip5: { TR: "Akü", DE: "Batterie" },
+  flow1_chip6: { TR: "Diğer", DE: "Sonstige" },
+  flow1_label: { TR: "Parça Tanımı", DE: "Teilebeschreibung" },
+  flow1_ph: { TR: "Örn: 2017 BMW 320d için arka sağ amortisör arıyorum...", DE: "Z.B.: Ich suche einen Stoßdämpfer hinten rechts für einen 2017 BMW 320d..." },
+  flow_next: { TR: "Devam Et", DE: "Weiter" },
+  
+  flow2_title: { TR: "Araç Ruhsatı", DE: "Fahrzeugschein" },
+  flow2_h2: { TR: "Fahrzeugschein Gerekli", DE: "Fahrzeugschein erforderlich" },
+  flow2_sub: { TR: "Doğru parçayı bulabilmemiz için VIN kontrolü şarttır. Aynı modelin farklı motor ve donanım varyasyonları olabilir.", DE: "Eine VIN-Prüfung ist unerlässlich, damit wir das richtige Teil finden können. Es kann verschiedene Motor- und Ausstattungsvarianten geben." },
+  flow2_up_title: { TR: "Ruhsat fotoğrafını yükleyin", DE: "Laden Sie ein Foto Ihres Fahrzeugscheins hoch" },
+  flow2_up_sub: { TR: "JPG, PNG veya PDF · Maks. 10 MB", DE: "JPG, PNG oder PDF · Max. 10 MB" },
+  flow2_cam: { TR: "Kamera", DE: "Kamera" },
+  flow2_file: { TR: "Dosya Seç", DE: "Datei auswählen" },
+  flow2_success: { TR: "fahrzeugschein.jpg yüklendi", DE: "fahrzeugschein.jpg hochgeladen" },
+  flow2_note: { TR: "Fahrzeugschein olmadan talep işleme alınamaz. Bu, doğru parça tespitinin temelidir.", DE: "Ohne Fahrzeugschein kann die Anfrage nicht bearbeitet werden. Dies ist die Grundlage für die Teileidentifikation." }
+};
+
+let currentLang = 'TR';
+
+function toggleLangMenu() {
+  const menu = document.getElementById('langMenu');
+  if (menu.classList.contains('open')) {
+    menu.classList.remove('open');
+  } else {
+    menu.classList.add('open');
+  }
+}
+
+// Close lang menu when clicking outside
+document.addEventListener('click', (e) => {
+  const selector = document.querySelector('.lang-selector');
+  if (selector && !selector.contains(e.target)) {
+    document.getElementById('langMenu')?.classList.remove('open');
+  }
+});
+
+function typeWriter(element, text, speed = 15) {
+  if (text.includes('<')) {
+    element.innerHTML = text;
+    return;
+  }
+
+  // Find the text node to replace, preserving SVGs or other elements
+  let targetTextNode = null;
+  for (let i = element.childNodes.length - 1; i >= 0; i--) {
+    const node = element.childNodes[i];
+    if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim() !== '') {
+      targetTextNode = node;
+      break;
+    }
+  }
+
+  if (!targetTextNode) {
+    targetTextNode = document.createTextNode('');
+    element.appendChild(targetTextNode);
+  }
+
+  // Prepend space if the original node had leading space and it's not empty
+  let leadingSpace = targetTextNode.nodeValue.match(/^\s+/);
+  let prefix = leadingSpace ? leadingSpace[0] : '';
+  if (!prefix && element.children.length > 0) {
+    prefix = ' '; // ensure there's a space after an SVG
+  }
+
+  targetTextNode.nodeValue = prefix;
+  let i = 0;
+
+  function type() {
+    if (i < text.length) {
+      targetTextNode.nodeValue += text.charAt(i);
+      i++;
+      requestAnimationFrame(() => {
+        setTimeout(type, speed);
+      });
+    }
+  }
+  type();
+}
+
+function changeLang(langCode) {
+  const btn = document.getElementById('currentLangBtn');
+  if (btn) btn.textContent = langCode;
+  document.getElementById('langMenu').classList.remove('open');
+  
+  // Real translations for DE, fallback for others
+  let targetLang = langCode;
+  if (langCode !== 'TR' && langCode !== 'DE') {
+    targetLang = 'DE'; // Use German as mock for EN, FR, IT, ES, RU
+  }
+  currentLang = targetLang;
+
+  const elements = document.querySelectorAll('[data-i18n]');
+  elements.forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[key] && translations[key][currentLang]) {
+      const newText = translations[key][currentLang];
+      if (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT') {
+        el.setAttribute('placeholder', newText);
+      } else {
+        typeWriter(el, newText, 10); // Very fast typing effect to feel premium
+      }
+    }
+  });
+}

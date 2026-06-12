@@ -520,14 +520,14 @@ textarea.input {
 
 /* ─── Logo Styles ─── */
 .logo-img {
-  height: 64px; /* Increased from 28px */
+  height: 54px; /* Reduced by 15% */
   width: auto;
   transition: opacity 0.3s ease;
 }
 
 @media (min-width: 768px) {
   .logo-img {
-    height: 80px; /* Increased from 32px */
+    height: 68px; /* Reduced by 15% */
   }
 }
 
