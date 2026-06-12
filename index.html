@@ -1,0 +1,790 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fahrzeugteile24 — Uzman Destekli Yedek Parça Platformu</title>
+  <meta name="description" content="Doğru yedek parça, uzman güvencesiyle. VIN bazlı kontrol, şeffaf teklifler, profesyonel danışmanlık.">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/customer.css">
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#" class="navbar-brand" onclick="closeFlow()">
+        <div class="navbar-logo">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="navbar-brand-text">fahrzeugteile<span>24</span></div>
+      </a>
+
+      <div class="navbar-links">
+        <a href="#nasil-calisir" class="navbar-link">Nasıl Çalışır?</a>
+        <a href="#guven" class="navbar-link">Neden fahrzeugteile24?</a>
+        <a href="#" class="navbar-link" onclick="showPage('requests'); return false;">Taleplerim</a>
+        <a href="#" class="navbar-link">Mesajlar</a>
+      </div>
+
+      <div class="navbar-actions">
+        <button class="theme-toggle" id="themeToggle" title="Tema değiştir">
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="#" class="btn btn-primary navbar-cta" onclick="openFlow(); return false;">Parça Talebi Oluştur</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ MOBILE MENU ═══ -->
+  <div class="mobile-menu-backdrop" id="mobileBackdrop" onclick="toggleMobileMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <span style="font-weight: 700; font-size: 1.125rem; color: var(--text-heading);">Menü</span>
+      <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu-body">
+      <a href="#nasil-calisir" class="mobile-nav-link" onclick="toggleMobileMenu()">Nasıl Çalışır?<span class="arrow">›</span></a>
+      <a href="#guven" class="mobile-nav-link" onclick="toggleMobileMenu()">Neden fahrzeugteile24?<span class="arrow">›</span></a>
+      <a href="#" class="mobile-nav-link" onclick="showPage('requests'); toggleMobileMenu(); return false;">Taleplerim<span class="arrow">›</span></a>
+      <a href="#" class="mobile-nav-link">Mesajlar<span class="arrow">›</span></a>
+      <a href="#" class="mobile-nav-link">Teslimat Takip<span class="arrow">›</span></a>
+      <a href="#" class="mobile-nav-link">Yardım & Destek<span class="arrow">›</span></a>
+    </div>
+    <div class="mobile-menu-footer">
+      <button class="btn btn-primary btn-block" onclick="openFlow(); toggleMobileMenu();">Parça Talebi Oluştur</button>
+    </div>
+  </div>
+
+  <!-- ═══ PAGE CONTENT ═══ -->
+  <div class="page-content" id="pageContent">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <div class="hero-eyebrow reveal">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              VIN Bazlı Uzman Kontrolü
+            </div>
+
+            <h1 class="reveal">Doğru Yedek Parça.<br>Uzman Güvencesiyle.</h1>
+            
+            <p class="hero-desc reveal">
+              Fahrzeugschein'ınızı yükleyin, uzman ekibimiz VIN kontrolü yapsın. 
+              Tahmin yok, yanlış parça riski yok — sadece doğrulanmış sonuçlar.
+            </p>
+
+            <div class="hero-actions reveal">
+              <button class="btn btn-primary btn-lg" onclick="openFlow()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                Parça Talebi Oluştur
+              </button>
+              <a href="#nasil-calisir" class="btn btn-secondary btn-lg">Nasıl Çalışır?</a>
+            </div>
+
+            <div class="hero-trust reveal">
+              <div class="hero-trust-item">
+                <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Ücretsiz talep
+              </div>
+              <div class="hero-trust-item">
+                <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                15-30 dk yanıt
+              </div>
+              <div class="hero-trust-item">
+                <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Kişisel danışmanlık
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NASIL ÇALIŞIR -->
+    <section class="section section-alt" id="nasil-calisir">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Nasıl Çalışır?</h2>
+          <p>4 basit adımda doğru yedek parçaya ulaşın. Tüm süreç hızlı, şeffaf ve uzman kontrolünde.</p>
+        </div>
+
+        <div class="steps-grid reveal-group">
+          <div class="step-card reveal">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Talep Oluşturun</h4>
+              <p>Aradığınız parçayı kendi kelimelerinizle yazın. "BMW 320d arka amortisör" gibi.</p>
+            </div>
+          </div>
+
+          <div class="step-card reveal">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>Ruhsat Yükleyin</h4>
+              <p>Fahrzeugschein fotoğrafını yükleyin. VIN kontrolü doğru parçanın temelidir.</p>
+            </div>
+          </div>
+
+          <div class="step-card reveal">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>Teklif Alın</h4>
+              <p>Uzmanlarımız parçayı araştırır, marka seçeneklerini ve fiyatları belirler.</p>
+            </div>
+          </div>
+
+          <div class="step-card reveal">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h4>Onaylayın</h4>
+              <p>Teklifi onaylayın veya soru sorun. Sürecin her adımını takip edin.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GÜVEN BÖLÜMü -->
+    <section class="section" id="guven">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>fahrzeugteile24'ü Farklı Yapan Ne?</h2>
+          <p>Uzmanlığı dijital ortamda daha verimli hale getiren, güvenilir bir yedek parça danışmanlık platformu.</p>
+        </div>
+
+        <div class="trust-grid reveal-group">
+          <div class="trust-card reveal">
+            <div class="trust-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h4>VIN Bazlı Kontrol</h4>
+              <p>Her talep araç ruhsatındaki VIN numarasıyla doğrulanır. Tahmin yoktur.</p>
+            </div>
+          </div>
+
+          <div class="trust-card reveal">
+            <div class="trust-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <h4>Gerçek Uzman Desteği</h4>
+              <p>Bütün teknik kararlar gerçek uzmanlar tarafından verilir. Otomatik öneri yoktur.</p>
+            </div>
+          </div>
+
+          <div class="trust-card reveal">
+            <div class="trust-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <h4>Doğru Parça Garantisi</h4>
+              <p>Bütün parçalar uzmanlar tarafından kontrol edilir. Yanlış parça riski ortadan kalkar.</p>
+            </div>
+          </div>
+
+          <div class="trust-card reveal">
+            <div class="trust-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </div>
+            <div>
+              <h4>Şeffaf Fiyat Teklifleri</h4>
+              <p>Marka, fiyat ve teslimat süresi net olarak sunulur. Gizli maliyet yoktur.</p>
+            </div>
+          </div>
+
+          <div class="trust-card reveal">
+            <div class="trust-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div>
+              <h4>Talep & Sipariş Takibi</h4>
+              <p>Talebinizin her aşamasını görün. WhatsApp karmaşası artık geride kaldı.</p>
+            </div>
+          </div>
+
+          <div class="trust-card reveal">
+            <div class="trust-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div>
+              <h4>Çok Dilli Destek</h4>
+              <p>Almanca, Türkçe, İngilizce ve daha fazlası. Herkes kendi dilinde destek alabilir.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KİMLER İÇİN? -->
+    <section class="section section-alt" id="kimler-icin">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Kimler İçin?</h2>
+          <p>fahrzeugteile24, doğru yedek parçayı güvenle almak isteyen herkes için tasarlandı.</p>
+        </div>
+
+        <div class="audience-list reveal-group">
+          <div class="audience-item reveal">
+            <div class="audience-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Araçlardan çok anlamayan kişiler
+          </div>
+          <div class="audience-item reveal">
+            <div class="audience-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Yanlış parça sipariş etmek istemeyenler
+          </div>
+          <div class="audience-item reveal">
+            <div class="audience-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Güvenilir danışmanlık arayanlar
+          </div>
+          <div class="audience-item reveal">
+            <div class="audience-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Fiziksel dükkâna gidemeyenler
+          </div>
+          <div class="audience-item reveal">
+            <div class="audience-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Farklı dillerde destek isteyenler
+          </div>
+          <div class="audience-item reveal">
+            <div class="audience-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Profesyonel deneyim bekleyen araç sahipleri
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="section">
+      <div class="container">
+        <div class="quote-section reveal">
+          <p class="quote-text">„Wir raten nicht. Wir prüfen die VIN."</p>
+          <p class="quote-sub">Çünkü doğru yedek parça, tahminle değil; uzmanlık ve doğrulamayla bulunur.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box reveal">
+          <h2>Doğru Parçaya Ulaşmanın En Kolay Yolu</h2>
+          <p>Talebinizi oluşturun, uzmanlarımız sizin için en uygun parçayı bulsun.</p>
+          <button class="btn btn-lg" onclick="openFlow()">
+            Parça Talebi Oluştur — Ücretsiz
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-text">© 2026 fahrzeugteile24. Tüm hakları saklıdır.</div>
+          <div class="footer-text">
+            <a href="#" style="color: var(--text-muted);">Gizlilik</a> · 
+            <a href="#" style="color: var(--text-muted);">Kullanım Şartları</a> · 
+            <a href="#" style="color: var(--text-muted);">İade Politikası</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ═══ TALEPLERİM PAGE ═══ -->
+  <div class="page-overlay" id="requestsPage">
+    <nav class="navbar scrolled">
+      <div class="navbar-inner">
+        <a href="#" class="navbar-brand" onclick="showPage('home'); return false;">
+          <div class="navbar-logo"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="navbar-brand-text">fahrzeugteile<span>24</span></div>
+        </a>
+        <div class="navbar-actions">
+          <button class="theme-toggle" onclick="toggleTheme()">
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </button>
+          <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.875rem;" onclick="showPage('home')">← Ana Sayfa</button>
+        </div>
+      </div>
+    </nav>
+
+    <div style="padding-top: 80px; max-width: 800px; margin: 0 auto; padding-left: 24px; padding-right: 24px;">
+      <div style="margin-bottom: 32px;">
+        <h2 style="color: var(--text-heading); margin-bottom: 8px;">Taleplerim</h2>
+        <p style="color: var(--text-secondary);">Gönderdiğiniz taleplerin durumunu buradan takip edebilirsiniz.</p>
+      </div>
+
+      <!-- Request Card 1 -->
+      <div class="card card-interactive" style="margin-bottom: 16px; cursor: pointer;" onclick="showPage('detail')">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+          <div>
+            <h4 style="color: var(--text-heading); font-size: 1rem;">BMW 320d Arka Amortisör</h4>
+            <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 2px;">Talep No: #REQ-8392</p>
+          </div>
+          <span class="badge badge-warning">● Teklif Bekleniyor</span>
+        </div>
+        <div style="display: flex; gap: 16px; font-size: 0.8125rem; color: var(--text-secondary);">
+          <span>📄 Ruhsat yüklendi</span>
+          <span>🕐 2 saat önce</span>
+        </div>
+        <div style="margin-top: 12px; padding: 12px 16px; background: var(--info-bg); border-radius: var(--radius-sm); font-size: 0.8125rem; color: var(--info);">
+          💬 Yeni mesaj: "Talebiniz inceleniyor, kısa sürede teklif göndereceğiz."
+        </div>
+      </div>
+
+      <!-- Request Card 2 -->
+      <div class="card card-interactive" style="margin-bottom: 16px; cursor: pointer;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+          <div>
+            <h4 style="color: var(--text-heading); font-size: 1rem;">VW Golf 7 Fren Balataları</h4>
+            <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 2px;">Talep No: #REQ-8387</p>
+          </div>
+          <span class="badge badge-accent">● Teklif Gönderildi</span>
+        </div>
+        <div style="display: flex; gap: 16px; font-size: 0.8125rem; color: var(--text-secondary);">
+          <span>📄 Ruhsat yüklendi</span>
+          <span>🕐 Dün, 17:46</span>
+        </div>
+        <div style="margin-top: 12px; padding: 12px 16px; background: var(--accent-soft); border-radius: var(--radius-sm); font-size: 0.8125rem; color: var(--accent); font-weight: 500;">
+          📋 Bir teklif kararınızı bekliyor
+        </div>
+      </div>
+
+      <!-- Request Card 3 -->
+      <div class="card" style="margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+          <div>
+            <h4 style="color: var(--text-heading); font-size: 1rem;">Mercedes C220 Sol Far</h4>
+            <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 2px;">Talep No: #REQ-8355</p>
+          </div>
+          <span class="badge badge-success">● Tamamlandı</span>
+        </div>
+        <div style="display: flex; gap: 16px; font-size: 0.8125rem; color: var(--text-secondary);">
+          <span>📄 Ruhsat yüklendi</span>
+          <span>🕐 10.06.2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ TALEP DETAY PAGE ═══ -->
+  <div class="page-overlay" id="detailPage">
+    <nav class="navbar scrolled">
+      <div class="navbar-inner">
+        <a href="#" class="navbar-brand" onclick="showPage('home'); return false;">
+          <div class="navbar-logo"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="navbar-brand-text">fahrzeugteile<span>24</span></div>
+        </a>
+        <div class="navbar-actions">
+          <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.875rem;" onclick="showPage('requests')">← Taleplerim</button>
+        </div>
+      </div>
+    </nav>
+
+    <div style="padding-top: 80px; max-width: 800px; margin: 0 auto; padding-left: 24px; padding-right: 24px; padding-bottom: 40px;">
+
+      <!-- Request Summary -->
+      <div class="card" style="margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+          <div>
+            <h3 style="color: var(--text-heading);">BMW 320d Arka Amortisör</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 4px;">#REQ-8392 · 2 saat önce</p>
+          </div>
+          <span class="badge badge-warning">● Teklif Bekleniyor</span>
+        </div>
+        <!-- Vehicle Info -->
+        <div style="background: var(--accent-soft); border: 1px solid var(--accent-border, rgba(30,58,95,0.15)); border-radius: var(--radius-md); padding: 16px; margin-top: 8px;">
+          <div style="font-size: 0.75rem; color: var(--accent); font-weight: 600; margin-bottom: 8px;">ARAÇ BİLGİSİ</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.875rem;">
+            <div><span style="color: var(--text-muted);">Model:</span> <strong style="color: var(--text-heading);">BMW 320d</strong></div>
+            <div><span style="color: var(--text-muted);">Yıl:</span> <strong style="color: var(--text-heading);">2019</strong></div>
+            <div style="grid-column: 1 / -1;"><span style="color: var(--text-muted);">VIN:</span> <strong style="color: var(--text-heading);">WBAPH5C55BA123456</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documents -->
+      <div class="card" style="margin-bottom: 20px;">
+        <h4 style="color: var(--text-heading); margin-bottom: 16px;">Belgeler</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px;">
+          <div style="background: var(--bg-section-alt); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; text-align: center;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" style="margin: 0 auto 8px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <div style="font-size: 0.75rem; font-weight: 600; color: var(--text-heading);">Fahrzeugschein</div>
+            <div style="font-size: 0.6875rem; color: var(--text-muted);">fahrzeugschein.jpg</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Messages -->
+      <div class="card" style="margin-bottom: 20px;">
+        <h4 style="color: var(--text-heading); margin-bottom: 16px;">Mesajlar</h4>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px;">
+          <!-- Expert message -->
+          <div style="display: flex; gap: 8px; max-width: 85%;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.75rem; font-weight: 700;">E</div>
+            <div>
+              <div style="background: var(--bg-section-alt); border: 1px solid var(--border); border-radius: 2px 12px 12px 12px; padding: 12px 16px;">
+                <p style="font-size: 0.875rem; color: var(--text-body);">Merhaba, talebiniz uzman ekibimize iletildi. Aracınız için en uygun amortisör seçeneklerini araştırıyoruz. Kısa sürede teklif göndereceğiz.</p>
+              </div>
+              <div style="font-size: 0.6875rem; color: var(--text-muted); margin-top: 4px;">fahrzeugteile24 Uzman · 14:32</div>
+            </div>
+          </div>
+          <!-- Customer message -->
+          <div style="display: flex; gap: 8px; max-width: 85%; margin-left: auto; flex-direction: row-reverse;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--success-bg); color: var(--success); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.75rem; font-weight: 700;">M</div>
+            <div style="text-align: right;">
+              <div style="background: var(--accent); color: white; border-radius: 12px 2px 12px 12px; padding: 12px 16px;">
+                <p style="font-size: 0.875rem;">Teşekkürler, ne kadar sürer acaba?</p>
+              </div>
+              <div style="font-size: 0.6875rem; color: var(--text-muted); margin-top: 4px;">Siz · 14:45</div>
+            </div>
+          </div>
+          <!-- Expert reply -->
+          <div style="display: flex; gap: 8px; max-width: 85%;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.75rem; font-weight: 700;">E</div>
+            <div>
+              <div style="background: var(--bg-section-alt); border: 1px solid var(--border); border-radius: 2px 12px 12px 12px; padding: 12px 16px;">
+                <p style="font-size: 0.875rem; color: var(--text-body);">Genellikle 15-30 dakika içinde teklif hazırlıyoruz. VIN kontrolünüz tamamlandı, şu an uygun parça seçeneklerini karşılaştırıyoruz.</p>
+              </div>
+              <div style="font-size: 0.6875rem; color: var(--text-muted); margin-top: 4px;">fahrzeugteile24 Uzman · 14:48</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Offer Card -->
+        <div style="border: 2px solid var(--accent); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 16px; background: var(--accent-softer);">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <span style="font-weight: 700; color: var(--accent);">Teklif</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+            <div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Marka</div>
+              <div style="font-weight: 600; color: var(--text-heading);">Sachs</div>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Ürün</div>
+              <div style="font-weight: 600; color: var(--text-heading);">Arka Amortisör</div>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Fiyat</div>
+              <div style="font-weight: 800; color: var(--text-heading); font-size: 1.25rem;">89 €</div>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Teslimat</div>
+              <div style="font-weight: 600; color: var(--text-heading);">2-3 iş günü</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn btn-primary" style="flex: 1;" onclick="alert('Teklif onaylandı!')">✓ Teklifi Onayla</button>
+            <button class="btn btn-secondary" style="flex: 1;">? Soru Sor</button>
+          </div>
+        </div>
+
+        <!-- Message Input -->
+        <div style="display: flex; gap: 8px;">
+          <input type="text" class="input" placeholder="Mesajınızı yazın..." style="flex: 1;">
+          <button class="btn btn-primary">Gönder</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ REQUEST FLOW OVERLAY ═══ -->
+  <div class="flow-overlay" id="flowOverlay">
+    
+    <!-- STEP 1: Parça Tanımı -->
+    <div class="flow-step active" id="flowStep1">
+      <div class="flow-header">
+        <button class="flow-back-btn" onclick="closeFlow()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="flow-header-title">Parça Talebi</span>
+        <span class="flow-header-step">1 / 4</span>
+      </div>
+
+      <div class="flow-progress">
+        <div class="flow-progress-inner">
+          <div class="progress-track">
+            <div class="progress-step active"><div class="progress-dot">1</div><div class="progress-label">Parça</div></div>
+            <div class="progress-step"><div class="progress-dot">2</div><div class="progress-label">Ruhsat</div></div>
+            <div class="progress-step"><div class="progress-dot">3</div><div class="progress-label">Ek Bilgi</div></div>
+            <div class="progress-step"><div class="progress-dot">4</div><div class="progress-label">Gönder</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-body">
+        <div class="flow-form">
+          <div>
+            <h2>Hangi parçayı arıyorsunuz?</h2>
+            <p class="subtitle">Aradığınız parçayı seçin veya kısaca tanımlayın.</p>
+          </div>
+
+          <div class="chip-group">
+            <button class="chip" onclick="selectChip(this)">Fren Balataları</button>
+            <button class="chip" onclick="selectChip(this)">Amortisör</button>
+            <button class="chip" onclick="selectChip(this)">Far / Aydınlatma</button>
+            <button class="chip" onclick="selectChip(this)">Yağ Filtresi</button>
+            <button class="chip" onclick="selectChip(this)">Akü</button>
+            <button class="chip" onclick="selectChip(this)">Diğer</button>
+          </div>
+
+          <div class="field-group">
+            <label class="input-label">Parça Tanımı</label>
+            <textarea class="input" placeholder="Örn: 2017 BMW 320d için arka sağ amortisör arıyorum..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-footer">
+        <button class="btn btn-primary btn-lg btn-block" onclick="goToStep(2)">Devam Et</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Fahrzeugschein -->
+    <div class="flow-step" id="flowStep2">
+      <div class="flow-header">
+        <button class="flow-back-btn" onclick="goToStep(1)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="flow-header-title">Araç Ruhsatı</span>
+        <span class="flow-header-step">2 / 4</span>
+      </div>
+
+      <div class="flow-progress">
+        <div class="flow-progress-inner">
+          <div class="progress-track">
+            <div class="progress-step completed"><div class="progress-dot">✓</div><div class="progress-label">Parça</div></div>
+            <div class="progress-step active"><div class="progress-dot">2</div><div class="progress-label">Ruhsat</div></div>
+            <div class="progress-step"><div class="progress-dot">3</div><div class="progress-label">Ek Bilgi</div></div>
+            <div class="progress-step"><div class="progress-dot">4</div><div class="progress-label">Gönder</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-body">
+        <div class="flow-form">
+          <div>
+            <h2>Fahrzeugschein Gerekli</h2>
+            <p class="subtitle">Doğru parçayı bulabilmemiz için VIN kontrolü şarttır. Aynı modelin farklı motor ve donanım varyasyonları olabilir.</p>
+          </div>
+
+          <div class="upload-area" onclick="simulateUpload(this)">
+            <div class="upload-icon-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <div>
+              <p style="font-weight: 600; color: var(--text-heading); margin-bottom: 4px;">Ruhsat fotoğrafını yükleyin</p>
+              <p class="text-muted" style="font-size: 0.8125rem;">JPG, PNG veya PDF · Maks. 10 MB</p>
+            </div>
+          </div>
+
+          <div class="upload-actions">
+            <button class="btn btn-secondary" onclick="simulateUpload(document.querySelector('.upload-area'))">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              Kamera
+            </button>
+            <button class="btn btn-secondary" onclick="simulateUpload(document.querySelector('.upload-area'))">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+              Dosya Seç
+            </button>
+          </div>
+
+          <div class="file-pill" id="filePill" style="display: none;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            fahrzeugschein.jpg yüklendi
+          </div>
+
+          <div class="info-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Fahrzeugschein olmadan talep işleme alınamaz. Bu, doğru parça tespitinin temelidir.
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-footer">
+        <button class="btn btn-primary btn-lg btn-block" onclick="goToStep(3)">Devam Et</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Ek Bilgiler -->
+    <div class="flow-step" id="flowStep3">
+      <div class="flow-header">
+        <button class="flow-back-btn" onclick="goToStep(2)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="flow-header-title">Ek Bilgiler</span>
+        <span class="flow-header-step">3 / 4</span>
+      </div>
+
+      <div class="flow-progress">
+        <div class="flow-progress-inner">
+          <div class="progress-track">
+            <div class="progress-step completed"><div class="progress-dot">✓</div><div class="progress-label">Parça</div></div>
+            <div class="progress-step completed"><div class="progress-dot">✓</div><div class="progress-label">Ruhsat</div></div>
+            <div class="progress-step active"><div class="progress-dot">3</div><div class="progress-label">Ek Bilgi</div></div>
+            <div class="progress-step"><div class="progress-dot">4</div><div class="progress-label">Gönder</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-body">
+        <div class="flow-form">
+          <div>
+            <h2>Ek Bilgiler</h2>
+            <p class="subtitle">Bu bilgiler opsiyoneldir ancak uzmanlarımızın süreci hızlandırmasına yardımcı olur.</p>
+          </div>
+
+          <div class="field-group">
+            <label class="input-label">OEM / Orijinal Parça Numarası</label>
+            <input type="text" class="input" placeholder="Örn: 1J0 698 151 G">
+          </div>
+
+          <div class="field-group">
+            <label class="input-label">Parça Fotoğrafları</label>
+            <div class="upload-area" style="padding: 24px;" onclick="this.innerHTML = '<div class=\'file-pill\' style=\'display:inline-flex\'><svg width=\'14\' height=\'14\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2.5\'><polyline points=\'20 6 9 17 4 12\'/></svg>parca_foto.jpg yüklendi</div>'">
+              <p style="font-weight: 500; font-size: 0.875rem; color: var(--text-secondary);">Hasarlı veya eski parçanın fotoğrafını ekleyin</p>
+              <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.8125rem;" onclick="event.stopPropagation();">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                Fotoğraf Ekle
+              </button>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="input-label">Ek Notlar</label>
+            <textarea class="input" placeholder="Eklemek istediğiniz başka bir detay var mı?" style="min-height: 80px;"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-footer">
+        <button class="btn btn-primary btn-lg btn-block" onclick="goToStep(4)">Talebi Gönder</button>
+        <button class="btn btn-ghost btn-block" onclick="goToStep(4)" style="font-size: 0.875rem;">Ek bilgi olmadan devam et</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Lazy Login -->
+    <div class="flow-step" id="flowStep4">
+      <div class="flow-header">
+        <button class="flow-back-btn" onclick="goToStep(3)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="flow-header-title">Son Adım</span>
+        <span class="flow-header-step">4 / 4</span>
+      </div>
+
+      <div class="flow-progress">
+        <div class="flow-progress-inner">
+          <div class="progress-track">
+            <div class="progress-step completed"><div class="progress-dot">✓</div><div class="progress-label">Parça</div></div>
+            <div class="progress-step completed"><div class="progress-dot">✓</div><div class="progress-label">Ruhsat</div></div>
+            <div class="progress-step completed"><div class="progress-dot">✓</div><div class="progress-label">Ek Bilgi</div></div>
+            <div class="progress-step active"><div class="progress-dot">4</div><div class="progress-label">Gönder</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-body">
+        <div class="flow-form">
+          <div class="login-step-wrap">
+            <div class="login-logo-wrap">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h2>Talebiniz Hazır!</h2>
+            <p class="subtitle" style="margin-top: 8px;">Talebinizi takip edebilmeniz ve teklif alabilmeniz için giriş yapın veya hesap oluşturun.</p>
+          </div>
+
+          <div class="login-form">
+            <div class="field-group">
+              <input type="email" class="input" placeholder="E-posta adresiniz">
+            </div>
+            <button class="btn btn-primary btn-lg btn-block" onclick="goToStep(5)">E-posta ile Devam Et</button>
+
+            <div class="divider">veya</div>
+
+            <button class="btn-social" onclick="goToStep(5)">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              Google ile Giriş Yap
+            </button>
+
+            <button class="btn-social" onclick="goToStep(5)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.32 2.32-1.55 4.41-3.74 4.25z"/></svg>
+              Apple ile Giriş Yap
+            </button>
+          </div>
+
+          <p style="text-align: center; font-size: 0.8125rem; color: var(--text-muted); margin-top: 12px;">
+            Giriş yaparak talebinizi takip edebilir, teklif alabilir ve uzmanlarla iletişim kurabilirsiniz.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5: Success -->
+    <div class="flow-step" id="flowStep5">
+      <div class="flow-header">
+        <span style="width: 36px;"></span>
+        <span class="flow-header-title">Tamamlandı</span>
+        <span class="flow-header-step"></span>
+      </div>
+
+      <div class="success-screen">
+        <div class="success-inner">
+          <div class="success-icon-wrap">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h2>Talebiniz İletildi!</h2>
+          <p>Uzman ekibimiz talebinizi kişisel olarak inceleyecek ve en kısa sürede sizinle iletişime geçecek.</p>
+          
+          <div class="success-info-card">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+              <div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 2px;">Talep No</div>
+                <div style="font-weight: 600; color: var(--text-heading);">#REQ-8392</div>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 2px;">Durum</div>
+                <span class="badge badge-success">● İnceleniyor</span>
+              </div>
+            </div>
+            <div style="font-size: 0.8125rem; color: var(--text-secondary);">Ortalama yanıt süresi: 15-30 dakika</div>
+          </div>
+
+          <div class="success-actions">
+            <button class="btn btn-primary btn-lg btn-block" onclick="closeFlow()">Taleplerime Git</button>
+            <button class="btn btn-secondary btn-block" onclick="closeFlow()">Ana Sayfaya Dön</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/customer.js"></script>
+</body>
+</html>
